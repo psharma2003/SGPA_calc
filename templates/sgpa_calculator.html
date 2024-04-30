@@ -1,0 +1,124 @@
+<html>
+<head>
+<style>
+      body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #a03a3a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #h {
+            color: red;
+            font-size: xx-large;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .bottum {
+            color: rgb(21, 173, 7);
+        }
+
+        .name {
+            color: rgb(205, 43, 22);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="button"] {
+            background-color: aqua;
+            font-size: 100%;
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 10px;
+            cursor: pointer;
+            color: #000;
+        }
+
+        input[type="button"]:hover {
+            background-color: #00bcd4;
+        }
+
+        #result {
+            color: red;
+            font-size: x-large;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+        a {
+    text-decoration: none;
+    color: blue; 
+}
+body{
+    margin: 10%;
+}
+</style>
+</head>
+<h1>{% if result_sgpa %}
+    <p style="color:red; font-size:x-large">Your SGPA is {{ result_sgpa }}</p>
+{% elif result_sgpa == 0 %}
+<p style="color:red; font-size:x-large">Karo Semester repeat</p>
+{% else %}
+<p style="color:red; font-size:x-large">Select correct choices of grades</p>
+{% endif %}</h1>
+<h1>1st year SGPA calculator</h1>
+
+<form method="post" action="{% url 'calculate_sgpa' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <style>
+        select {
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
+    <input type="submit" value="Calculate" style="width: 200px; height: 40px;">
+</form>
+
+{% if result_sgpa %}
+    <p style="color:red; font-size:x-large">Your SGPA is {{ result_sgpa }}</p>
+{% elif result_sgpa == 0 %}
+<p style="color:red; font-size:x-large">Karo Semester repeat</p>
+{% else %}
+<p style="color:red; font-size:x-large">Select correct choices of grades</p>
+{% endif %}
+
+<h5 style="color: blue;">
+    <a href="mailto:2021pcecsmegh102@poornima.org" style="text-decoration: none; color: blue;">Created by Megh Shah(PCE21CS102)   </a>
+    <a href="mailto:2021pcecsmegh102@poornima.org" style="text-decoration: none; color: blue;"><small><br><u>Any Suggestions?</u></small></a>
+</h5>
+<h5 style="color: green;">
+    Developed with python
+</h5>      
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</html>
